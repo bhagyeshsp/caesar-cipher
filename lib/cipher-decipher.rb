@@ -7,16 +7,16 @@
 smallcase_alphabets = ("a".."z")
 upcase_alphabets = ("A".."Z")
 alphabets = smallcase_alphabets.to_a + upcase_alphabets.to_a
-p alphabets
+# p alphabets
 
 # # create alphabet mappings
 # {"a"=>1, "b"=>2, "c"=>3, "d"=>4, "e"=>5, "f"=>6, "g"=>7, "h"=>8, "i"=>9, "j"=>10, "k"=>11, "l"=>12, "m"=>13, "n"=>14, "o"=>15, "p"=>16, "q"=>17, "r"=>18, "s"=>19, "t"=>20, "u"=>21, "v"=>22, "w"=>23, "x"=>24, "y"=>25, "z"=>26, "A"=>27, "B"=>28, "C"=>29, "D"=>30, "E"=>31, "F"=>32, "G"=>33, "H"=>34, "I"=>35, "J"=>36, "K"=>37, "L"=>38, "M"=>39, "N"=>40, "O"=>41, "P"=>42, "Q"=>43, "R"=>44, "S"=>45, "T"=>46, "U"=>47, "V"=>48, "W"=>49, "X"=>50, "Y"=>51, "Z"=>52}
 
-ALPHABET_DICTIONARY = Hash.new
-alphabets.each_with_index { |item, index|
+ALPHABET_DICTIONARY = {}
+alphabets.each_with_index do |item, index|
   ALPHABET_DICTIONARY[item] = index + 1
-}
-p ALPHABET_DICTIONARY
+end
+# p ALPHABET_DICTIONARY
 
 def caesar_cipher(string, shift_factor)
   char_array = string_to_array(string)
@@ -39,16 +39,14 @@ def find_char_to_number_code(char_array)
     end
   end
   p number_arr.flatten
-  return number_arr.flatten
+  number_arr.flatten
 end
 
 def shift_right(number_array, shift_factor)
-  shifted_arr = number_array.map do |num| 
+  shifted_arr = number_array.map do |num|
     if num.class == Integer
       shifted_value = num + shift_factor
-      if shifted_value > 52
-        shifted_value = shifted_value - 52    
-      end
+      shifted_value -= 52 if shifted_value > 52
       shifted_value
     else
       num
@@ -59,9 +57,9 @@ end
 def shifted_char(shifted_number_array)
   cipher_arr = shifted_number_array.map do |num|
     if num.class == Integer
-    num = ALPHABET_DICTIONARY.key(num)
+      num = ALPHABET_DICTIONARY.key(num)
     else
-    num
+      num
     end
   end
 end
@@ -70,12 +68,10 @@ def decipher(string, shift_factor)
   char_array = string_to_array(string)
   number_arr = find_char_to_number_code(char_array)
   # unshifting of numbers
-  unshifted_arr = number_arr.map do |num| 
+  unshifted_arr = number_arr.map do |num|
     if num.class == Integer
       shifted_value = num - shift_factor
-      if shifted_value < 1
-        shifted_value = shifted_value + 52    
-      end
+      shifted_value += 52 if shifted_value < 1
       shifted_value
     else
       num
@@ -85,8 +81,8 @@ def decipher(string, shift_factor)
   p decipher_arr.join
 end
 
-caesar_cipher("Hello World!!", 5)
-decipher("Mjqqt btwqi!!",5)
+# caesar_cipher("Hello World!!", 5)
+# decipher("Mjqqt btwqi!!",5)
 
 # Alternatively a CLI-based interactive program:
 # def askUser

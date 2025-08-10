@@ -19,19 +19,27 @@ end
 describe "#string_to_array" do
   # This is a Public Query method
   # Need to test its return value
+  it "splits a provided string into its constituents character array" do
+  end
 end
 
 describe "#find_char_to_number_code" do
   # This is a Public Query method
   # Need to test its return value
+  it "returns a number array mapped to a provided character array" do
+  end
 end
 
 describe "#shift_right" do
   # This is a Public Query method
   # Need to test its return value
+  it "generates a shifted array by adding the shift factor to each number" do
+  end
 end
 
 describe "#shifted_char" do
   # This is a Public Query method
   # Need to test its return value
+  it "returns a character array mapped from a provided shifted number array" do
+  end
 end

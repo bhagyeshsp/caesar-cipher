@@ -29,7 +29,10 @@ end
 describe "#find_char_to_number_code" do
   # This is a Public Query method
   # Need to test its return value
-  xit "returns a number array mapped to a provided character array" do
+  it "returns a number array mapped to a provided character array" do
+    character_array = ["W", "h", "a", "t", " ", "a", " ", "s", "t", "r", "i", "n", "g", "!"]
+    number_array = [49, 8, 1, 20, " ", 1, " ", 19, 20, 18, 9, 14, 7, "!"]
+    expect(find_char_to_number_code(character_array)).to eq(number_array)
   end
 end
 
